@@ -1,4 +1,4 @@
-assets/scenes
+assets
 build
 .vs
 .vscode
@@ -8,3 +8,5 @@ tests/system_test/artifacts
 tests/system_test/tmp
 output/*
 .mypy_cache
+third_party
+CMakeFiles

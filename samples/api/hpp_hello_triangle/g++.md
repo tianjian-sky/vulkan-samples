@@ -1,0 +1,1 @@
+g++ hpp_hello_triangle.cpp -I../../../framework -I ../../../third_party/volk -I ../../../third_party/spdlog/include -I ../../../third_party/vma/src -I ../../../third_party/glm/ -I ../../../third_party/spdlog/include/spdlog/details -I ../../../app/apps -I ../../../third_party/tinygltf -I ../../../../VulkanSDK/macOS/include/vulkan  --std=c++14
