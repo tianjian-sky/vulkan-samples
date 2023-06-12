@@ -22,6 +22,7 @@
 #include "glsl_compiler.h"
 #include "platform/filesystem.h"
 #include "platform/platform.h"
+#include <iostream>
 
 #if defined(VKB_DEBUG) || defined(VKB_VALIDATION_LAYERS)
 /// @brief A debug callback called from Vulkan validation layers.
@@ -1056,6 +1057,8 @@ void HelloTriangle::teardown(Context &context)
 
 HelloTriangle::HelloTriangle()
 {
+	LOGI("--------  hello_triangle.cpp HelloTriangle()  --------");
+	std::cout << "--------  hello_triangle.cpp HelloTriangle()  --------" << std::endl;
 }
 
 HelloTriangle::~HelloTriangle()

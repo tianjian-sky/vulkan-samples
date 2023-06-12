@@ -19,6 +19,9 @@ cmake_minimum_required(VERSION 3.16)
 
 project(framework LANGUAGES C CXX)
 
+# debug infos
+message("*** sub build: framework ***")
+
 set(FRAMEWORK_FILES
     # Header Files
     gui.h
@@ -437,6 +440,17 @@ if(ANDROID)
     add_definitions(-DVULKAN_HPP_TYPESAFE_CONVERSION=1)
 endif()
 
+# debug infos
+message("   *** var ANDROID: ${ANDROID}")
+message("   *** var DIRECT_TO_DISPLAY: ${DIRECT_TO_DISPLAY}")
+message("   *** var WIN32: ${WIN32}")
+message("   *** var MSVC: ${MSVC}")
+message("   *** var VKB_VALIDATION_LAYERS:  ${VKB_VALIDATION_LAYERS}")
+message("   *** var VKB_VALIDATION_LAYERS_GPU_ASSISTED:   ${VKB_VALIDATION_LAYERS_GPU_ASSISTED}")
+message("   *** var VKB_VULKAN_DEBUG:   ${VKB_VULKAN_DEBUG}")
+message("   *** var VKB_ENABLE_PORTABILITY: ${VKB_ENABLE_PORTABILITY}")
+message("   *** var VKB_WARNINGS_AS_ERRORS: ${VKB_WARNINGS_AS_ERRORS}")
+message("   *** var VKB_ENABLE_PORTABILITY: ${VKB_ENABLE_PORTABILITY}")
 # Add files based on platform
 if(ANDROID)
     list(APPEND PROJECT_FILES ${ANDROID_FILES})
@@ -453,6 +467,9 @@ else()
         else()
             list(APPEND PROJECT_FILES ${UNIX_FILES})
             message(STATUS "Unix platform detected")
+
+            # debug infos
+            message("   *** var PROJECT_FILES: ${PROJECT_FILES}")
         endif()
     endif()
 endif()
@@ -476,6 +493,7 @@ if(MSVC)
 endif()
 
 if(${VKB_VALIDATION_LAYERS})
+    message("++++++++++++++++++")
     target_compile_definitions(${PROJECT_NAME} PUBLIC VKB_VALIDATION_LAYERS)
 endif()
 
@@ -506,6 +524,9 @@ if(${VKB_WARNINGS_AS_ERRORS})
     endif()
 endif()
 
+message("   *** var CMAKE_CURRENT_SOURCE_DIR: ${CMAKE_CURRENT_SOURCE_DIR}")
+# get_target_property(_temp_1 plugins INCLUDE_DIRECTORIES)
+# message("-----> 生成器表达式 --->" ${_temp_1})
 target_include_directories(${PROJECT_NAME} PUBLIC $<TARGET_PROPERTY:plugins,INCLUDE_DIRECTORIES> ${CMAKE_CURRENT_SOURCE_DIR})
 
 # Link third party libraries

@@ -23,9 +23,8 @@ function(add_sample)
     set(options)  
     set(oneValueArgs ID CATEGORY AUTHOR NAME DESCRIPTION)
     set(multiValueArgs FILES LIBS SHADER_FILES_GLSL)
-
     cmake_parse_arguments(TARGET "${options}" "${oneValueArgs}" "${multiValueArgs}" ${ARGN})    
-
+    message("********   add_sample:${ID}")
     add_sample_with_tags(
         TYPE "Sample"
         ID ${TARGET_ID}
@@ -139,7 +138,8 @@ function(add_project)
 
     add_library(${PROJECT_NAME} OBJECT ${TARGET_FILES} ${SHADERS_GLSL})
     set_target_properties(${PROJECT_NAME} PROPERTIES POSITION_INDEPENDENT_CODE ON)
-
+    message("   ********   CMAKE_CURRENT_SOURCE_DIR:${CMAKE_CURRENT_SOURCE_DIR}")
+    message("   ********   CMAKE_CURRENT_BINARY_DIR:${CMAKE_CURRENT_BINARY_DIR}")
     # # inherit include directories from framework target
     target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
     target_link_libraries(${PROJECT_NAME} PRIVATE framework)

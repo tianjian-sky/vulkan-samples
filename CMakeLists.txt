@@ -54,6 +54,8 @@ list(APPEND CMAKE_MODULE_PATH
     ${CMAKE_CURRENT_SOURCE_DIR}/bldsys/cmake
     ${CMAKE_CURRENT_SOURCE_DIR}/bldsys/cmake/module)
 
+message("----   CMAKE_MODULE_PATH:  ${CMAKE_MODULE_PATH}")
+
 include(utils)
 include(global_options)
 include(sample_helper)
@@ -64,7 +66,8 @@ add_subdirectory(third_party)
 
 # Add vulkan framework
 add_subdirectory(framework)
-
+message("   *** var VKB_BUILD_TESTS: ${VKB_BUILD_TESTS}")
+message("   *** var VKB_BUILD_SAMPLES: ${VKB_BUILD_SAMPLES}")
 if(VKB_BUILD_TESTS)
     # Add vulkan tests
     add_subdirectory(tests)

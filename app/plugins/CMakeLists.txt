@@ -59,6 +59,9 @@ foreach(DIR IN LISTS PLUGINS_FILES)
     endif()
 endforeach()
 
+message("--------       plugins:    PLUGINS:${PLUGINS}")
+message("--------       plugins:    CMAKE_CURRENT_SOURCE_DIR:${CMAKE_CURRENT_SOURCE_DIR}")
+message("--------       plugins:    CMAKE_CURRENT_BINARY_DIR:${CMAKE_CURRENT_BINARY_DIR}")
 # filter compiled plugins
 if(NOT ${VKB_BUILD_TESTS})
     list(REMOVE_ITEM PLUGINS "start_test")
@@ -80,6 +83,9 @@ endforeach()
 list(JOIN PLUGIN_INCLUDE_FILES "\n" PLUGIN_INCLUDE_FILES)
 list(JOIN INIT_PLUGINS ";\n" INIT_PLUGINS)
 set(INIT_PLUGINS "${INIT_PLUGINS};")
+
+message("--------       plugins:PLUGIN_INCLUDE_FILES:   ${PLUGIN_INCLUDE_FILES}")
+message("--------       plugins:INIT_PLUGINS:   ${INIT_PLUGINS}")
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/plugins.cpp.in ${CMAKE_CURRENT_BINARY_DIR}/plugins.cpp)
 

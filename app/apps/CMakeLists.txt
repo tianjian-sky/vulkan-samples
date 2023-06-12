@@ -26,6 +26,7 @@ set(SAMPLE_INCLUDE_FILES)
 set(SAMPLE_INFO_LIST)
 
 foreach(SAMPLE_ID ${TOTAL_SAMPLE_ID_LIST})
+message("--------       apps:   SAMPLE_ID:${SAMPLE_ID}  VKB_${SAMPLE_ID}:${VKB_${SAMPLE_ID}}")
     if ("${VKB_${SAMPLE_ID}}" AND TARGET ${SAMPLE_ID})
         get_target_property(SAMPLE_CATEGORY ${SAMPLE_ID} SAMPLE_CATEGORY)
         get_target_property(SAMPLE_AUTHOR ${SAMPLE_ID} SAMPLE_AUTHOR)
